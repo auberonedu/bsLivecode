@@ -1,5 +1,53 @@
+import java.util.*; 
+
 public class BSPractice {
     public static void main(String[] args) {
-        
+        List<Integer> items = new LinkedList<>();
+
+        items.add(5);
+        items.add(7);
+        items.add(9);
+        items.add(21);
+        items.add(21);
+        items.add(50);
+
+        insert(items, 15);
+        insert(items, 51);
+        insert(items, 22);
+        insert(items, 23);
+        insert(items, -3);
+        insert(items, -3);
+        insert(items, 51);
+
+        System.out.println(items.toString());
     }
+
+    public static void insert(List<Integer> items, int toInsert){
+        // if(items == null){
+        //     throw new NullPointerException();
+        // }
+
+        int low = 0;
+        int high = items.size();
+        int mid;
+
+        while(low < high){
+            mid = low + (high - low) / 2;
+
+            int midItem = items.get(mid);
+
+            if(toInsert == midItem){
+                items.add(mid, toInsert);
+                return;
+            } else if( toInsert < midItem){
+                // Maybe mid - 1?
+                // mid - 1 does not work properly
+                high = mid;
+            } else {
+                low = mid + 1;
+            }
+        }
+    items.add(low, toInsert);
+    }
+
 }
