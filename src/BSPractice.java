@@ -36,8 +36,7 @@ public class BSPractice {
                 items.add(mid, toInsert);
                 return;
             } else if(toInsert < midItem) {
-                // Maybe mid - 1?
-                high = mid - 1;
+                high = mid;
             } else {
                 low = mid + 1;
             }
